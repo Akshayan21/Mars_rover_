@@ -13,24 +13,25 @@ public class MarsRoverSimulation {
         MarsRover rover = new MarsRover(initialX, initialY, initialDirection, gridSizeX, gridSizeY);
 
         // Add obstacles to the grid
-        rover.addObstacle(1, 2);
-        rover.addObstacle(2, 2);
-        rover.addObstacle(3, 4);
+        rover.addObstacle(1, 10);
+        // rover.addObstacle(2, 8);
+        // rover.addObstacle(3, 4);
 
         // User inputs
-        String commandsInput = "MRMLMRM";
+        String commandsInput = "MRMLMTMLMR";
 
         // Execute commands
         for (char command : commandsInput.toCharArray()) {
             if (command == 'L' || command == 'R') {
                 rover.rotate(command);
+                rover.displayPosition();
             } else if (command == 'M') {
                 rover.move();
+                rover.displayPosition();
             } else {
                 System.out.println("Invalid command: " + command);
             }
         }
         // Print the final position of the rover
-        rover.displayPosition();
     }
 }
