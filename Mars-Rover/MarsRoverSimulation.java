@@ -1,5 +1,9 @@
+import java.util.Scanner;
+
 public class MarsRoverSimulation {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
         // Set grid size
         int gridSizeX = 10;
         int gridSizeY = 10;
@@ -12,13 +16,14 @@ public class MarsRoverSimulation {
         // Create MarsRover object
         MarsRover rover = new MarsRover(initialX, initialY, initialDirection, gridSizeX, gridSizeY);
 
-        // Add obstacles to the grid
+        // Add obstacles to the grid (optional, can be done via user input as well)
         rover.addObstacle(1, 10);
         // rover.addObstacle(2, 8);
         // rover.addObstacle(3, 4);
 
-        // User inputs
-        String commandsInput = "MRMLMTMLMR";
+        // Get user input for commands
+        System.out.println("Enter commands for the Mars Rover (L, R, M): ");
+        String commandsInput = scanner.nextLine();
 
         // Execute commands
         for (char command : commandsInput.toCharArray()) {
@@ -32,6 +37,11 @@ public class MarsRoverSimulation {
                 System.out.println("Invalid command: " + command);
             }
         }
+
         // Print the final position of the rover
+        System.out.println("Final position of the rover:");
+        rover.displayPosition();
+
+        scanner.close();
     }
 }
